@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: BUSINESS-SERVICE
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        namespace: ORDER-GRAY-VERSION-SERVICE
+  config:
+    import: nacos:${spring.application.name}.yml?refresh=true
