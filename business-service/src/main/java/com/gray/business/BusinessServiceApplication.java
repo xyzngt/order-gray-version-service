@@ -1,9 +1,20 @@
 package com.gray.business;
 
+import com.gray.business.balancer.GrayVersionLoadBalancer;
+import com.gray.business.config.GrayVersionLoadBalancerConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClients;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
+/**
+ * @author xyzngt
+ */
 @SpringBootApplication
+@EnableFeignClients
+@LoadBalancerClients(defaultConfiguration = GrayVersionLoadBalancerConfiguration.class)
 public class BusinessServiceApplication {
 
     public static void main(String[] args) {
